@@ -1,15 +1,17 @@
 import React, { useRef, useLayoutEffect } from 'react';
 import './App.css';
 
+
 /**
  * 相对于坐标系而不是canvase的坐标。
  */
 class P {
   x: number;
   y: number;
+  scale: number = 1;
   constructor(x: number, y: number) {
-    this.x = x;
-    this.y = y;
+    this.x = x * P.prototype.scale;
+    this.y = y * P.prototype.scale;
   }
 }
 enum key {
@@ -17,7 +19,13 @@ enum key {
   y = "y",
 }
 
-const size = 500;
+
+const winWidth = window.innerWidth;
+const maxWidth = 720;
+const scale = winWidth >= maxWidth ? 1 : winWidth / maxWidth;
+
+P.prototype.scale = scale;
+const size = 500 * scale;
 
 const p0 = new P(10, 10);
 const p1 = new P(100, 300);
@@ -77,7 +85,7 @@ function App() {
 
       // 画刻度
       const fontWidth = size / 100;
-      ctx.font = "20px serif";
+      ctx.font = `${20 * scale}px serif`;
       ctx.fillText("0", base_x - 2 * fontWidth, base_y + 2 * fontWidth);
       ctx.fillStyle = 'darkred';
       for (let index = 1; index <= 10; index++) {

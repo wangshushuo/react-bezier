@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "cfb386b660a00327d685e7f34681f4ba",
+    "revision": "7365ebf836f691292f6bda694c09492a",
     "url": "/react-bezier/index.html"
   },
   {
-    "revision": "f76eaed7e48e875004cc",
+    "revision": "09f607e014fe2cffd40d",
     "url": "/react-bezier/static/css/main.5f361e03.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/react-bezier/static/js/2.3343174c.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "f76eaed7e48e875004cc",
-    "url": "/react-bezier/static/js/main.6f9120b2.chunk.js"
+    "revision": "09f607e014fe2cffd40d",
+    "url": "/react-bezier/static/js/main.66c8b72a.chunk.js"
   },
   {
     "revision": "18dd2719948f01cd5931",

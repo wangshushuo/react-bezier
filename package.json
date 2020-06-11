@@ -3,6 +3,9 @@
   "homepage": "https://friday.run/bezier",
   "description": "使用JS计算贝塞尔曲线",
   "version": "0.1.0",
+  "publishConfig": {
+    
+  },
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
@@ -19,7 +22,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && mv build docs",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/bezier/static/css/main.5f361e03.chunk.css",
+    "main.js": "/bezier/static/js/main.786cefc1.chunk.js",
+    "main.js.map": "/bezier/static/js/main.786cefc1.chunk.js.map",
+    "runtime-main.js": "/bezier/static/js/runtime-main.56e2273d.js",
+    "runtime-main.js.map": "/bezier/static/js/runtime-main.56e2273d.js.map",
+    "static/js/2.3343174c.chunk.js": "/bezier/static/js/2.3343174c.chunk.js",
+    "static/js/2.3343174c.chunk.js.map": "/bezier/static/js/2.3343174c.chunk.js.map",
+    "index.html": "/bezier/index.html",
+    "precache-manifest.8f260265ddff352b765b0e47cfbfb704.js": "/bezier/precache-manifest.8f260265ddff352b765b0e47cfbfb704.js",
+    "service-worker.js": "/bezier/service-worker.js",
+    "static/css/main.5f361e03.chunk.css.map": "/bezier/static/css/main.5f361e03.chunk.css.map",
+    "static/js/2.3343174c.chunk.js.LICENSE.txt": "/bezier/static/js/2.3343174c.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.56e2273d.js",
+    "static/js/2.3343174c.chunk.js",
+    "static/css/main.5f361e03.chunk.css",
+    "static/js/main.786cefc1.chunk.js"
+  ]
+}

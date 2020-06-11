@@ -1,5 +1,7 @@
 {
-  "name": "cubic-bezier",
+  "name": "react-bezier",
+  "homepage": "https://friday.run/bezier",
+  "description": "使用JS计算贝塞尔曲线",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

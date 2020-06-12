@@ -3,9 +3,7 @@
   "homepage": "https://wss.cool/react-bezier",
   "description": "使用JS计算贝塞尔曲线",
   "version": "0.1.0",
-  "publishConfig": {
-    
-  },
+  "publishConfig": {},
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
@@ -15,6 +13,7 @@
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
+    "@wangshushuo/bezierjs": "^0.0.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",

@@ -1,67 +1,19 @@
 import React, { useRef, useLayoutEffect } from 'react';
 import './App.css';
-
-
-/**
- * 相对于坐标系而不是canvase的坐标。
- */
-class P {
-  x: number;
-  y: number;
-  scale: number = 1;
-  constructor(x: number, y: number) {
-    this.x = x * P.prototype.scale;
-    this.y = y * P.prototype.scale;
-  }
-}
-enum key {
-  x = "x",
-  y = "y",
-}
-
+import Bezier from '@wangshushuo/bezierjs'
 
 const winWidth = window.innerWidth;
 const maxWidth = 720;
 const scale = winWidth >= maxWidth ? 1 : winWidth / maxWidth;
 
-P.prototype.scale = scale;
 const size = 500 * scale;
 
-const p0 = new P(10, 10);
-const p1 = new P(100, 300);
-const p2 = new P(200, 20);
-const p3 = new P(250, 400)
-const p4 = new P(500, 20);
-
-const p = [p0, p1, p2, p3, p4]
-
-function 阶乘(n: number): number {
-  if (n === 0) return 1;
-  return n * 阶乘(n - 1)
-}
-function 组合(n: number, i: number): number {
-  return 阶乘(n) / (阶乘(i) * 阶乘(n - i))
-}
-/**
- * 计算白塞尔曲线
- * @param t [0,1] 0-1之间的小数
- * @param n 几项白塞尔曲线，默认3项
- * @param key 控制点对象P的key，也就是x或y字符串
- */
-function cubic_bezier(t: number, n: number, key: key): number {
-  let sum = 0;
-  for (let i = 0; i <= n; i++) {
-    const tn = 组合(n, i) * p[i][key] * Math.pow(1 - t, n - i) * Math.pow(t, i);
-    sum += tn;
-  }
-  return sum
-}
-function cb_x(T: number) {
-  return cubic_bezier(T, p.length - 1, key.x);
-}
-function cb_y(T: number) {
-  return cubic_bezier(T, p.length - 1, key.y);
-}
+const bezier = new Bezier();
+bezier.addPoint(10 * scale, 10 * scale)
+bezier.addPoint(100 * scale, 300 * scale)
+bezier.addPoint(200 * scale, 20 * scale)
+bezier.addPoint(350 * scale, 400 * scale)
+bezier.addPoint(500 * scale, 20 * scale)
 
 function App() {
   const ref = useRef<HTMLCanvasElement>(null);
@@ -70,6 +22,8 @@ function App() {
     if (ref.current) {
       const ctx = ref.current.getContext('2d');
       if (!ctx) return;
+      const p = bezier.getPointArray();
+
       const margin = size * 0.05;
       const base_x = margin;
       const base_y = size * 1.1 - margin;
@@ -133,8 +87,8 @@ function App() {
         const t = index / size;
 
         // 画贝塞尔曲线
-        const x1 = x0 + cb_x(t);
-        const y1 = y0 - cb_y(t);
+        const x1 = x0 + bezier.bezier_x(t);
+        const y1 = y0 - bezier.bezier_y(t);
 
         ctx.lineTo(x1, y1);
       }

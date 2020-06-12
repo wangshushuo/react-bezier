@@ -1698,6 +1698,11 @@
     semver "^7.3.2"
     tsutils "^3.17.1"
 
+"@wangshushuo/bezierjs@^0.0.4":
+  version "0.0.4"
+  resolved "https://registry.npmjs.org/@wangshushuo/bezierjs/-/bezierjs-0.0.4.tgz#d5c56681cc4dfe52676da1390dea75ac6a517c03"
+  integrity sha512-S3BrC2dNxFJaytfty6rjyau8TYRtiSUjK24cGnJf3+tPZwb69750o5Ax1siQBMNh/29Kk1g3fjxbTQBS1ecEDQ==
+
 "@webassemblyjs/ast@1.8.5":
   version "1.8.5"
   resolved "https://registry.npm.taobao.org/@webassemblyjs/ast/download/@webassemblyjs/ast-1.8.5.tgz#51b1c5fe6576a34953bf4b253df9f0d490d9e359"

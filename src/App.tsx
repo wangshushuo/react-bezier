@@ -1,4 +1,4 @@
-import React, { useRef, useLayoutEffect } from 'react';
+import React, {useRef, useLayoutEffect} from 'react';
 import './App.css';
 import Bezier from '@wangshushuo/bezierjs'
 
@@ -11,9 +11,29 @@ const size = 500 * scale;
 const bezier = new Bezier();
 bezier.addPoint(10 * scale, 10 * scale)
 bezier.addPoint(100 * scale, 300 * scale)
-bezier.addPoint(200 * scale, 20 * scale)
+// bezier.addPoint(200 * scale, 20 * scale)
 bezier.addPoint(350 * scale, 400 * scale)
 bezier.addPoint(500 * scale, 20 * scale)
+
+function d(x: number, y: number, ctx: CanvasRenderingContext2D) {
+  ctx.lineTo(x, y);
+  ctx.strokeStyle = 'blue';
+  ctx.stroke();
+}
+
+function r(p: number[][], ctx: CanvasRenderingContext2D, end: () => void) {
+  function step() {
+    const point = p.shift()
+    if (point) {
+      d(point[0], point[1], ctx)
+      window.requestAnimationFrame(step);
+    } else {
+      end()
+    }
+  }
+
+  window.requestAnimationFrame(step);
+}
 
 function App() {
   const ref = useRef<HTMLCanvasElement>(null);
@@ -69,7 +89,7 @@ function App() {
         ctx.beginPath();
         ctx.arc(x, y, fontWidth, 0, Math.PI * 2, true);
         ctx.closePath();
-        ctx.fillStyle="darkgreen"
+        ctx.fillStyle = "darkgreen"
         ctx.fill()
         ctx.fillText(i + "", x + 5, y + 2);
       }
@@ -80,6 +100,7 @@ function App() {
       ctx.beginPath();
       ctx.moveTo(base_x + p[0].x, base_y - p[0].y);
       ctx.lineWidth = 2;
+      const point: number[][] = [];
       for (let index = 1; index < size; index++) {
         const x0 = base_x;
         const y0 = base_y;
@@ -90,17 +111,18 @@ function App() {
         const x1 = x0 + bezier.bezier_x(t);
         const y1 = y0 - bezier.bezier_y(t);
 
-        ctx.lineTo(x1, y1);
+        point.push([x1, y1])
       }
-      ctx.strokeStyle = 'blue';
-      ctx.stroke();
-      ctx.closePath();
+
+      r(point, ctx, () => {
+        ctx.closePath();
+      })
     }
   })
   return (
     <div className="App">
       <h1>贝塞尔曲线</h1>
-      <canvas ref={ref} width={size * 1.1} height={size * 1.1} style={{ margin: 0, border: '1px solid #000' }}></canvas>
+      <canvas ref={ref} width={size * 1.1} height={size * 1.1} style={{margin: 0, border: '1px solid #000'}}></canvas>
     </div>
   );
 }
